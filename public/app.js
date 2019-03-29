@@ -1,18 +1,20 @@
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
-      $(".articles").append("<h5 data-id='" + data[i]._id + "'>" + data[i].title + "<a href=" + data[i].link + ">" + "     --    "  +  "Article Link</a></h5");
+      $(".articles").append("<h5 data-id='" + data[i]._id + "'>" + data[i].title + "</h5>" + "<a href=" + data[i].link + ">Article Link</a></h5>");
       $(".articles").append("<p>" + data[i].summary + "</p><br/>")
     }
     console.log(data)
   });
 
+
+  //need to add comment save to section after modal pops-up
 $(document).on("click", "h5", function() {
     $("#results-modal").modal("toggle");
     //var thisId = $(this).attr("data-id");
     })
 
 
-$().on("click", "#close", function() {
+$(document).on("click", "#close", function() {
     $("#comments").empty();
 })
 
@@ -33,5 +35,5 @@ $().on("click", "#close", function() {
 //            console.log(err);
 //          });
 
-//        $("#comments").empty();
+//         $("#comments").empty();
 //})

@@ -7,7 +7,7 @@ var cheerio = require("cheerio");
 
 var db = require("./models");
 
-var PORT = 3100;
+var PORT = 3150;
 
 var app = express();
 
@@ -67,4 +67,3 @@ app.get("/articles", function(req, res) {
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
   });
-  
