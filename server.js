@@ -25,20 +25,20 @@ app.get("/", function(req, res) {
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
 app.get("/", function(req,res){
-    axios.get("https://www.nytimes.com/", function(response){
+    axios.get("https://www.nytimes.com", function(response){
         var $ = cheerio.load(response.data);
       console.log(response);
         $("article").each(function(i, elemet){
             var result = {};
 
             result.title = $(element)
-            .find("h2").
+            .find("h2.headline").
             Text();
-            result.url = 'https://www.nytimes.com' + $(element)
+            result.url = $(element)
             .find("a")
             .attr("href");
             result.summary = $(element)
-            .find("p")
+            .find("p.summary")
             Text();
 
             db.Article.create(result)
@@ -54,7 +54,7 @@ app.get("/", function(req,res){
 })
 
 app.get("/articles", function(req, res) {
-    db.Article.find({}).limit(5)
+    db.Article.find({}).limit(10)
       .then(function(dbArticle) {
         res.json(dbArticle);
       })
