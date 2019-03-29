@@ -12,18 +12,26 @@ $(document).on("click", "h5", function() {
     })
 
 
-$(document).on("click", "#submit", function() {
-       var result = {
-           comments = ".comments"
-       }
+$().on("click", "#close", function() {
+    $("#comments").empty();
+})
+
+
+
+//$(document).on("click", "#submit", function() {
+//     var result = {
+//       comments = ".comments"
+// }
   
     
     
-    db.comments.create(result)
-            .then(function(dbArticle) {
-            console.log(dbArticle);
-            })
-            .catch(function(err) {
-            console.log(err);
-            });
-})
+//    db.comments.create(result)
+//            .then(function(dbArticle) {
+//            console.log(dbArticle);
+//            })
+//            .catch(function(err) {
+//            console.log(err);
+//          });
+
+//        $("#comments").empty();
+//})
